@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 3</title>
+</head>
+<body>
+
+    <h1>Filtrar Productos por Precio</h1>
+
+    <label for="precioMinimo">Ingresa el precio mínimo:</label>
+    <input type="number" id="precioMinimo" placeholder="Precio mínimo">
+
+    <button onclick="mostrarProductosFiltrados()">Filtrar Productos</button>
+
+    <h2>Productos disponibles:</h2>
+    <ul id="productosLista"></ul>
+
+    <h2>Productos filtrados:</h2>
+    <ul id="productosFiltradosLista"></ul>
+
+    <script>
+       
+        const productos = [
+            { nombre: "Producto 1", precio: 100 },
+            { nombre: "Producto 2", precio: 200 },
+            { nombre: "Producto 3", precio: 50 },
+            { nombre: "Producto 4", precio: 300 }
+        ];
+
+        function filtrarProductos(productos, precioMinimo) {
+            return productos.filter(producto => producto.precio > precioMinimo);
+        }
+
+        function mostrarProductosFiltrados() {
+            const precioMinimo = document.getElementById('precioMinimo').value;
+            const productosFiltrados = filtrarProductos(productos, Number(precioMinimo));
+
+            const productosFiltradosLista = document.getElementById('productosFiltradosLista');
+            productosFiltradosLista.innerHTML = '';
+
+           
+            productosFiltrados.forEach(producto => {
+                const li = document.createElement('li');
+                li.textContent = `${producto.nombre} - $${producto.precio}`;
+                productosFiltradosLista.appendChild(li);
+            });
+        }
+
+       
+        function mostrarProductosDisponibles() {
+            const productosLista = document.getElementById('productosLista');
+            productos.forEach(producto => {
+                const li = document.createElement('li');
+                li.textContent = `${producto.nombre} - $${producto.precio}`;
+                productosLista.appendChild(li);
+            });
+        }
+
+        
+        mostrarProductosDisponibles();
+    </script>
+
+</body>
+</html>

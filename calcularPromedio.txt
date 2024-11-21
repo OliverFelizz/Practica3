@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 3</title>
+
+</head>
+<body>
+    <h1>Calcular promedio</h1>
+    <p>Ingrese los números separados por coma:</p>
+    <input type="text" id="numerosInput" placeholder="Ejemplo: 5,10,15,20">
+    <button onclick="mostrarPromedio()">Calcular promedio</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularPromedio(numeros) {
+            if (numeros.length === 0) return 0
+
+            let suma = 0
+
+            for(let i = 0; i < numeros.length; i++) {
+                suma += numeros[i]
+            }
+
+            let promedio = suma / numeros.length
+            return promedio
+        }
+
+        function mostrarPromedio() {
+            const numerosInput = document.getElementById('numerosInput').value
+            const numerosArray = numerosInput.split(',').map(Number)
+
+            const promedio = calcularPromedio(numerosArray)
+
+            document.getElementById('resultado').innerText = 'El promedio es:' + promedio
+        }
+
+    </script>
+
+</body>
+</html>
