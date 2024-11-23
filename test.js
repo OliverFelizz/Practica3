@@ -1,8 +1,7 @@
 // Importar módulos
-const { error } = require('console');
 const fs = require('fs') //manejar archivos
 const path = require('path') //manejar rutas
-const { Builder, By, until } = require('selenium-webdriver');
+const { Builder, By } = require('selenium-webdriver');
 
 (async function testFiltrarProductos() {
     // Configura el navegador de uso y construye su instancia controlada por Selenium
